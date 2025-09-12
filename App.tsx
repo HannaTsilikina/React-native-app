@@ -1,6 +1,8 @@
-import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, StyleSheet,  View } from 'react-native';
 import { Input } from './shared/Input/Input';
-import {Colors} from './shared/constants'
+import { Colors } from './shared/constants'
+import { Button } from './shared/Button/Button';
+
 
 export default function App() {
 
@@ -10,10 +12,12 @@ export default function App() {
       <Image style={styles.logo} resizeMode='contain' source={require('./assets/logo.png')} />
       <View style={styles.inputs}>
         <Input placeholder='Email' />
-         <Input placeholder='Пароль'/>
-                <Button title='Войти' />
+        <Input placeholder='Пароль' isPassword />
+        <Button text='Войти'/>
+                {/* <Button title='Войти' /> */}
       </View>
-      <Button title='Восстановить пароль' />
+      {/* <Button title='Восстановить пароль' /> */}
+
     </View>
   );
 }
@@ -38,7 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 16,
-    width: 280
+    width: 280,
   },
  
 
