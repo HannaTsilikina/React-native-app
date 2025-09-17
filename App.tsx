@@ -1,24 +1,32 @@
-import { Image, StyleSheet,  View } from 'react-native';
+import { Alert, Image, StyleSheet, View } from 'react-native';
 import { Input } from './shared/Input/Input';
 import { Colors } from './shared/constants'
 import { Button } from './shared/Button/Button';
+import { CustomAlert } from './shared/CustomAlert/CustomAlert';
+import { useState } from 'react';
 
 
 export default function App() {
+const [error, setError]=useState<string|null>(null)
+  const handlePress = () => {
+    setError('Неверный логин и пароль')
+    setTimeout(()=>setError(null), 4000)
+    
+  }
 
-
-  return (
+  return (<>
     <View style={styles.container}>
       <Image style={styles.logo} resizeMode='contain' source={require('./assets/logo.png')} />
       <View style={styles.inputs}>
         <Input placeholder='Email' />
         <Input placeholder='Пароль' isPassword />
-        <Button text='Войти'/>
-                {/* <Button title='Войти' /> */}
+        <Button text='Войти' onPress={handlePress} />
       </View>
       {/* <Button title='Восстановить пароль' /> */}
 
     </View>
+    <CustomAlert error={error} />
+    </>
   );
 }
 
@@ -44,6 +52,6 @@ const styles = StyleSheet.create({
     gap: 16,
     width: 280,
   },
- 
+
 
 });
